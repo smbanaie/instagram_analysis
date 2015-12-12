@@ -4,7 +4,10 @@ def MakeUniqueValues(fname) :
 
     input_file = codecs.open(fname, 'rU', 'utf-8')
     data = {}
+    cnt = 1
     for line in input_file :
+        print ("Processing # " + str(cnt))
+        cnt += 1
         if line not in data.keys():
             data[line] = 1
 
@@ -18,4 +21,4 @@ def MakeUniqueValues(fname) :
 
 
 if __name__ == "__main__" :
-    MakeUniqueValues("medias_out")
+    MakeUniqueValues("D:\MyProjects\Instagram\user_ids.txt")
