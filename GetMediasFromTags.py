@@ -14,8 +14,11 @@ parameters = dict(
     client_id=client_id
 )
 
-tags_file = codecs.open(r'D:\MyProjects\Instagram\tags.txt', 'rU', 'utf-8')
-media_ids = codecs.open(r"D:\MyProjects\Instagram\medias.txt", 'aU', 'utf-8')
+tags_file = codecs.open(r'tags.txt', 'rU', 'utf-8')
+media_ids = codecs.open(r"medias.txt", 'aU', 'utf-8')
+
+
+
 
 line  =1
 mcnt  = 1
@@ -25,7 +28,6 @@ for tag in tags_file :
     print (str(line))
     line +=1
     try :
-        if line > 354 :
             r = requests.get(tag_endpoint,params=parameters)
             if r.status_code == 200 :
 
@@ -43,4 +45,4 @@ for tag in tags_file :
 tags_file.close()
 media_ids.close()
 
-MakeUniqueValues("D:\MyProjects\Instagram\medias.txt")
+MakeUniqueValues("medias.txt")
