@@ -1,8 +1,8 @@
 import codecs
 
-def MakeUniqueValues(fname) :
+def MakeUniqueValues(ifname,ofname="") :
 
-    input_file = codecs.open(fname, 'rU', 'utf-8')
+    input_file = codecs.open(ifname, 'rU', 'utf-8')
     data = {}
     cnt = 1
     for line in input_file :
@@ -12,7 +12,11 @@ def MakeUniqueValues(fname) :
             data[line] = 1
 
     input_file.close()
-    output_file = codecs.open(fname, 'wU', 'utf-8')
+    if ofname != "" :
+       output_file = codecs.open(ofname, 'wU', 'utf-8')
+    else :
+       output_file = codecs.open(ifname, 'wU', 'utf-8')
+
 
     for key in data.keys() :
         output_file.write(key)
