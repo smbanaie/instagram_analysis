@@ -19,7 +19,15 @@ tags_file.close()
 
 
 def print_url(r,**kwargs):
-    print r.url
+    if r.status_code == 200 :
+            output = codecs.open(r'tags_all.txt', 'aU', 'utf-8')
+            medias =  r.json()["data"]
+            for media in medias:
+                for tag in media["tags"] :
+                        if detect(tag)=='fa' and len(tag)>1:
+                            print(tag)
+                            output.write(tag+"\n")
+            output.close()
 
 def async(url_list):
     sites = []
@@ -28,7 +36,7 @@ def async(url_list):
         sites.append(rs)
     return grequests.map(sites)
 
-urls = [u"https://api.instagram.com/v1/tags/%s/media/recent" % (tag.strip()) for tag in tags]
+urls = [u"https://api.instagram.com/v1/tags/%s/media/recent?client_id=%s" % (tag.strip(),client_id) for tag in tags]
 print (async(urls))
 
 
@@ -46,16 +54,9 @@ print (async(urls))
 #     tag_endpoint = u"https://api.instagram.com/v1/tags/%s/media/recent" % (tag.strip())
 #     try :
 #         r = requests.get(tag_endpoint,params=parameters)
-#         if r.status_code == 200 :
-#             medias =  r.json()["data"]
-#             for media in medias:
-#                 for tag in media["tags"] :
-#                         if detect(tag)=='fa' and len(tag)>1:
-#                             print(tag)
-#                             output.write(tag+"\n")
-#             output.flush()
+
 #     except Exception,e:
 #         print(e.message)
 # output.close()
-# # remove redundancies
-# MakeUniqueValues('tags_all.txt','tags.txt')
+# remove redundancies
+MakeUniqueValues('tags_all.txt','tags.txt')

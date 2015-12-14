@@ -25,4 +25,4 @@ def MakeUniqueValues(ifname,ofname="") :
 
 
 if __name__ == "__main__" :
-    MakeUniqueValues("D:\MyProjects\Instagram\user_ids.txt")
+    MakeUniqueValues('tags_all.txt','tags.txt')
