@@ -16,7 +16,7 @@ for tag in tags_file :
     tags.append(tag)
 tags_file.close()
 
-output = codecs.open(r'tags_all.txt', 'aU', 'utf-8')
+output = codecs.open(r'tags_all.txt', 'wU', 'utf-8')
 
 # tags =["زمستان","مشهد" ,"ایران" ,"گل","تهران","اصفهان","شیراز","اهواز","بوشهر","پسرونه","دخترونه","طنز","تلگرام"]
 cnt =1
