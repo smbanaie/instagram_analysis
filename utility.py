@@ -13,9 +13,9 @@ def MakeUniqueValues(ifname,ofname="") :
 
     input_file.close()
     if ofname != "" :
-       output_file = codecs.open(ofname, 'wU', 'utf-8')
+       output_file = codecs.open(ofname, 'w', 'utf-8')
     else :
-       output_file = codecs.open(ifname, 'wU', 'utf-8')
+       output_file = codecs.open(ifname, 'w', 'utf-8')
 
 
     for key in data.keys() :
